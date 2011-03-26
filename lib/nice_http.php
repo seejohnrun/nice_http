@@ -12,7 +12,7 @@ require 'request/delete_request.php';
 require 'request/put_request.php';
 
 // Current version string - also can access as NiceHTTP::version()
-define('NICEHTTP_VERSION', '0.0.1');
+define('NICEHTTP_VERSION', '0.0.2');
 
 class NiceHTTP {
 
