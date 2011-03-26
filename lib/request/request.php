@@ -55,9 +55,69 @@ class Request {
         if (\NiceHTTP::doesAllowExternalConnections()) return $this->actuallySend();
     }
 
+    // Determine if this was a GET request
+    function isGet() { return $this->method == 'GET'; }
+    
+    // Determine if this was a POST request
+    function isPost() { return $this->method == 'POST'; }
+
+    // Determine if this was a PUT request
+    function isPut() { return $this->method == 'PUT'; }
+
+    // Determine if this was a DELETE request
+    function isDelete() { return $this->method == 'DELETE'; }
+
+    // Return a boolean as to whether or not this request has a given header
+    // Optionally, supply a second value which is the value it must have to return true
+    function hasHeader($name, $value = null) {
+        if (!array_key_exists($name, $this->headers)) return false;
+        if ($value === null) return true;
+        return $value == $this->headers[$name];
+    }
+
+    // Determine if this request has a certain path
+    function hasPath($path) {
+        return $path == $this->getPath();
+    }
+
+    // Determine if the request has a host that matches a certain regex
+    function hasPathLike($regex) {
+        $path = $this->getPath();
+        if ($path === null) return false;
+        return preg_match($regex, $path) != 0;
+    }
+
+    // Determine if this request has a certain host
+    function hasHost($host) {
+        return $host == $this->getHost();
+    }
+
+    // Determine if the request has a host that matches a certain regex
+    function hasHostLike($regex) {
+        $host = $this->getHost();
+        if ($host === null) return false;
+        return preg_match($regex, $host) != 0;
+    }
+
     // Get the host of the current URL
     function getHost() {
         return is_array($this->url) ? $this->url['host'] : null;
+    }
+
+    // Return the HTTP method of the request
+    function getMethod() {
+        return $this->method;
+    }
+
+    function hasPort($port) {
+        return $this->getPort() == $port;
+    }
+
+    // Get the port of the current url
+    function getPort() {
+        if (is_array($this->url)) {
+            return array_key_exists('port', $this->url) ? (int)$this->url['port'] : 80;
+        }
     }
     
     // Get the path of the current URL

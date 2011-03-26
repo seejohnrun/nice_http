@@ -35,7 +35,7 @@ You also get the option to build your requests more methodically (builder):
 A large inspiration for this library existing was the ability to test resources you make calls to.  The way we do this is by registering matchers:
 
     NiceHTTP::register(function($request) {
-        if ($request->method == 'GET' && $request->url['path'] == '/') return NiceHTTP\BasicResponse(200, 'hello world');
+        if ($request->isGET() && $request->hasPath('/')) return NiceHTTP\BasicResponse(200, 'hello world');
     });
 
 When you make a request inside of your application, the first things that happens is we run through all of the matchers.  The first one that's a match, we return the result of as the response.  We have the convenience class `BasicResponse` to use here.
@@ -43,6 +43,19 @@ When you make a request inside of your application, the first things that happen
     new NiceHTTP\BasicResponse(code, body, headers);
 
 This way we can write tests that's don't depend on actually hitting the service it uses.  There's all kinds of reasons you'd want to do this.
+
+You get some helpers for free to make your testing easier:
+
+* `isGet()` - Return true if the request was a GET
+* `isPut()` - Return true if the request was a PUT
+* `isPost()` - Return true if the request was a POST
+* `isDelete()` - Return true if the request was a DELETE
+* `hasPath($path)` - Return true if the request has an exact path
+* `hasPathLike($regex)` - Returns true if the request has a path matching a pattern
+* `hasHost($host)` - Return true if the request has an exact host
+* `hasHostLike($regex)` - Returns true if the request has a path matching a pattern
+* `hasPort($port)` - Return true if the request has a given port
+* `hasHeader($name, $value = null)` - Return true if the header exists, (and has a certain value if $value is given)
 
 ---
 
