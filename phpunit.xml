@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit colors="true" stopOnFailure="false">
+	<testsuites>
+		<testsuite name="NiceHTTPTests">
+            <directory name="tests" suffix="_test.php">./</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
