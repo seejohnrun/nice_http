@@ -1,9 +1,9 @@
 <?php
 
+require 'exceptions/bad_format_exception.php';
+
 require 'response/response.php';
 require 'response/basic_response.php';
-
-require 'exceptions/bad_format_exception.php';
 
 require 'request/request.php';
 require 'request/get_request.php';
@@ -11,6 +11,7 @@ require 'request/post_request.php';
 require 'request/delete_request.php';
 require 'request/put_request.php';
 
+// Current version string - also can access as NiceHTTP::version()
 define('NICEHTTP_VERSION', '0.0.1');
 
 class NiceHTTP {
@@ -92,6 +93,7 @@ class NiceHTTP {
         return null;
     }
 
+    // Report back our current version
     static function version() {
         return NICEHTTP_VERSION;
     }

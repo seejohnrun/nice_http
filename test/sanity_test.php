@@ -2,7 +2,7 @@
 
 require_once dirname(__FILE__) . '/../lib/nice_http.php';
 
-class SanityTest extends PHPUnit_Framework_TestCase {
+class BasicTest extends PHPUnit_Framework_TestCase {
 
     public function setUp() {
         // Disallow all connections to the *real* network
