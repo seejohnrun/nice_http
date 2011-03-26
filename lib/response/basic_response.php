@@ -1,6 +1,6 @@
 <?php
 
-require_once 'nice_http.php';
+require_once 'response.php';
 
 class BasicResponse extends Response {
 

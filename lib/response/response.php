@@ -1,6 +1,6 @@
 <?php
 
-require_once 'nice_http.php';
+require_once dirname(__FILE__) . '/../nice_http.php';
 
 class Response {
 

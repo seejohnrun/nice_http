@@ -1,7 +1,7 @@
 <?php
 
 require_once 'request.php';
-require_once 'bad_format_exception.php';
+require_once dirname(__FILE__) . '/../exceptions/bad_format_exception.php';
 
 class DeleteRequest extends Request {
 

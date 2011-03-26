@@ -1,14 +1,15 @@
 <?php
 
-require 'response.php';
-require 'basic_response.php';
-require 'bad_format_exception.php';
+require 'response/response.php';
+require 'response/basic_response.php';
 
-require 'request.php';
-require 'get_request.php';
-require 'post_request.php';
-require 'delete_request.php';
-require 'put_request.php';
+require 'exceptions/bad_format_exception.php';
+
+require 'request/request.php';
+require 'request/get_request.php';
+require 'request/post_request.php';
+require 'request/delete_request.php';
+require 'request/put_request.php';
 
 class NiceHTTP {
 
