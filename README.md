@@ -38,7 +38,7 @@ A large inspiration for this library existing was the ability to test resources 
         if ($request->isGET() && $request->hasPath('/')) return NiceHTTP\BasicResponse(200, 'hello world');
     });
 
-When you make a request inside of your application, the first things that happens is we run through all of the matchers.  The first one that's a match, we return the result of as the response.  We have the convenience class `BasicResponse` to use here.
+When you make a request inside of your application, the first things that happens is we run through all of the matchers.  The first one that's a match, we return the result of as the response.  We have the convenience class `NiceHTTP\BasicResponse` to use here.
 
     new NiceHTTP\BasicResponse(code, body, headers);
 
