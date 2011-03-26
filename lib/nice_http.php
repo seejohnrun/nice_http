@@ -11,6 +11,8 @@ require 'request/post_request.php';
 require 'request/delete_request.php';
 require 'request/put_request.php';
 
+define('NICEHTTP_VERSION', '0.0.1');
+
 class NiceHTTP {
 
     // A flag to indicate whether or not external connections are allowed
@@ -88,6 +90,10 @@ class NiceHTTP {
             }
         } 
         return null;
+    }
+
+    static function version() {
+        return NICEHTTP_VERSION;
     }
 
 }

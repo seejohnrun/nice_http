@@ -10,6 +10,10 @@ class BasicTest extends PHPUnit_Framework_TestCase {
         NiceHTTP::disallowExternalConnections();
     }
 
+    public function testGetVersion() {
+        $this->assertNotEquals(NiceHTTP::version(), '');
+    }
+
     public function testSimpleGet() {
         // Respond 'hello root path' to anything that's a GET request to the hostname example.com
         NiceHTTP::register(function($request) {
