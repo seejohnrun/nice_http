@@ -54,14 +54,26 @@ class NiceHTTP {
     // Perform (construct and send) a GET request on the given url, 
     // with optional body and headers
     static function get($url, $body = null, $headers = array()) {
-        $request = new GetRequest($url, $body, $headers);
+        $request = new NiceHTTP\GetRequest($url, $body, $headers);
         return $request->send();
     }
 
     // Perform (construct and send) a POST request on the given url 
     // with optional body and headers
     static function post($url, $body = null, $headers = array()) {
-        $request = new PostRequest($url, $body, $headers);
+        $request = new NiceHTTP\PostRequest($url, $body, $headers);
+        return $request->send();
+    }
+
+    // Perform a put request on the given url with optional body and headers
+    static function put($url, $body = null, $headers = array()) {
+        $request = new NiceHTTP\PutRequest($url, $body, $headers);
+        return $request->send();
+    }
+
+    // Perform a delete request on the given url with optional headers
+    static function delete($url, $headers = array()) {
+        $request = new NiceHTTP\DeleteRequest($url, null, $headers);
         return $request->send();
     }
 
@@ -70,7 +82,10 @@ class NiceHTTP {
     static function match($request) {
         foreach (self::$matchers as $matcher) {
             $response = $matcher($request);
-            if ($response !== null) return $response;
+            if ($response !== null) {
+                $response->request = $request;
+                return $response;
+            }
         } 
         return null;
     }

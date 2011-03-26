@@ -1,11 +1,11 @@
-<?php
+<?php namespace NiceHTTP;
 
 require_once dirname(__FILE__) . '/../nice_http.php';
 
 class Response {
 
     // These are left public for convenience
-    var $status, $body, $headers;    
+    var $status, $body, $headers, $request;
 
     function __construct($request, $data) {
         $this->request = $request;

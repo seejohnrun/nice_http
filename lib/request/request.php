@@ -1,4 +1,4 @@
-<?php
+<?php namespace NiceHTTP;
 
 class Request {
 
@@ -49,10 +49,10 @@ class Request {
 
     // Send this request and return a $response object
     function send() {
-        $response = NiceHTTP::match($this);
+        $response = \NiceHTTP::match($this);
         if ($response !== null) return $response;
 
-        if (NiceHTTP::doesAllowExternalConnections()) return $this->actuallySend();
+        if (\NiceHTTP::doesAllowExternalConnections()) return $this->actuallySend();
     }
 
     // Get the host of the current URL

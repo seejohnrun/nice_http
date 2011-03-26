@@ -1,4 +1,4 @@
-<?php
+<?php namespace NiceHTTP;
 
 require_once 'request.php';
 require_once dirname(__FILE__) . '/../exceptions/bad_format_exception.php';

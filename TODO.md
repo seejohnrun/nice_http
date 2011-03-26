@@ -1,1 +1,1 @@
-* namespace
+* rest of the HTTP verbs

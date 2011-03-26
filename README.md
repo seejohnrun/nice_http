@@ -24,9 +24,9 @@ In its most basic usable, NiceHTTP can be used like this:
 
 You also get the option to build your requests more methodically (builder):
 
-    $request = new GetRequest();
-		$request->setUrl('http://www.google.com/')->addHeader('Authorization' => 'xxx');
-		$response = $request->send();
+    $request = new NiceHTTP\GetRequest();
+    $request->setUrl('http://www.google.com/')->addHeader('Authorization' => 'xxx');
+    $response = $request->send();
 
 ---
 
@@ -34,13 +34,13 @@ You also get the option to build your requests more methodically (builder):
 
 A large inspiration for this library existing was the ability to test resources you make calls to.  The way we do this is by registering matchers:
 
-    NiceHTTP.register(function($request) {
-        if ($request->method == 'GET' && $request->url['path'] == '/') return BasicResponse(200, 'hello world');
+    NiceHTTP::register(function($request) {
+        if ($request->method == 'GET' && $request->url['path'] == '/') return NiceHTTP\BasicResponse(200, 'hello world');
     });
 
 When you make a request inside of your application, the first things that happens is we run through all of the matchers.  The first one that's a match, we return the result of as the response.  We have the convenience class `BasicResponse` to use here.
 
-    new BasicResponse(code, body, headers);
+    new NiceHTTP\BasicResponse(code, body, headers);
 
 This way we can write tests that's don't depend on actually hitting the service it uses.  There's all kinds of reasons you'd want to do this.
 
@@ -51,6 +51,13 @@ This way we can write tests that's don't depend on actually hitting the service 
 If none of your matchers match the given request - then it will fall through and make the actual request.  If you want to stop that from happening in your tests (which I fully recommend) - you can just do:
 
     NiceHTTP::disallowExternalConnections();
+
+---
+
+### Requirements
+
+NiceHTTP uses namespaces and anonymous functions, so you'll need PHP >= 5.3
+Time to upgrade!
 
 ---
 

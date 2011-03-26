@@ -1,4 +1,4 @@
-<?php
+<?php namespace NiceHTTP;
 
 require_once 'request.php';
 
