@@ -7,13 +7,13 @@ Oftentimes, we end up using things like `file_get_contents`, but there are a few
 * Its ugly
 * It doesn't work nicely with verbs other than `GET`.
 
-_NiceHTTP_ aims to solve this problem by introducing a clean DSL in front of sockets, and allow you to write tests around the connections you make by stubbing out responses.
+_NiceHTTP_ aims to solve this problem by introducing a clean DSL in front of sockets, and allows you to write tests around the connections you make by stubbing out responses.
 
 ---
 
 ## Simple Requests
 
-In its most basic usable, NiceHTTP can be used like this:
+In its most basic use, NiceHTTP rolls like this:
 
     $response = NiceHTTP::get('http://www.google.com/')
     $response->status // 200
@@ -61,7 +61,7 @@ You get some helpers for free to make your testing easier:
 
 ## Never Connecting
 
-If none of your matchers match the given request - then it will fall through and make the actual request.  If you want to stop that from happening in your tests (which I fully recommend) - you can just do:
+If none of your matchers match the given request - then it will fall through and make the actual request.  If you want to stop that from happening in your tests (which I fully recommend) - you can just this in your `setUp()`:
 
     NiceHTTP::disallowExternalConnections();
 
@@ -69,8 +69,8 @@ If none of your matchers match the given request - then it will fall through and
 
 ### Requirements
 
-NiceHTTP uses namespaces and anonymous functions, so you'll need PHP >= 5.3
-Time to upgrade!
+NiceHTTP uses namespaces and anonymous functions, so you'll need `PHP >= 5.3`
+Time to upgrade if you haven't already - there's a lot of cool stuff there waiting.
 
 ---
 
