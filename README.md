@@ -67,19 +67,19 @@ If none of your matchers match the given request - then it will fall through and
 
 ---
 
-### Requirements
+## Requirements
 
 NiceHTTP uses namespaces and anonymous functions, so you'll need `PHP >= 5.3`
 Time to upgrade if you haven't already - there's a lot of cool stuff there waiting.
 
 ---
 
-### Author
+## Author
 
 John Crepezzi - [john.crepezzi@gmail.com](mailto:john.crepezzi@gmail.com)
 
 ---
 
-### License
+## License
 
 MIT License (attached)
