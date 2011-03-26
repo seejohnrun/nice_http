@@ -17,29 +17,34 @@ class Request {
     // or a String of the URL
     function setUrl($url) {
         $this->url = is_array($url) ? $url : parse_url($url);
+        return $this;
     }
 
     // Set the body for this request.  Expects a String
     function setBody($body) {
         $this->body = $body;
+        return $this;
     }
 
     // Set the headers for this request.
     // Expects an associative array of headers
     function setHeaders($headers) {
         $this->headers = $headers;
+        return $this;
     }
 
     // Add a given header - overwriting the existing one if it already
     // exists
     function addHeader($name, $value) {
         $this->headers[$name] = $value;
+        return $this;
     }
 
     // Add a given set of headers, overwriting values that already
     // exist
     function addHeaders($headers) {
         $this->headers = array_merge($this->headers, $headers);
+        return $this;
     }
 
     // Send this request and return a $response object
